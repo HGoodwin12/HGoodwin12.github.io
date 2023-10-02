@@ -8,8 +8,8 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
-			font-size: 300%;
+			background-color: rgb(255, 36, 0);
+			font-size: 350%;
 			text-align: center;
 			user-select: none;
 			display: block;
@@ -63,7 +63,7 @@
 			
 			// TODO 2 - Variable declarations 
 			
-
+			var positionX = 0
 			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -71,8 +71,8 @@
 			turn it around! 
 			*/
 			function update() {
-				
-
+				positionX = positionX + 17
+				moveBoxTo(positionX);
 			};
 
 			/* 
@@ -81,9 +81,8 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
-
-
+				positionX = 0;
+				changeBoxText(17);
 			};
 		})();
 	</script>
