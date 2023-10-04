@@ -90,6 +90,9 @@
 			*/
 			function handleBoxClick() {
 				positionX = 0;
+				if (speed < 0) {
+					speed = speed * -1
+				}
 				points = points + 1
 				if (speed > 0) {
 					speed = speed + 3
