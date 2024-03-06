@@ -11,8 +11,8 @@ var highScoreElement = $("#highScore");
 
 // TODO 4a: Create the snake, apple and score variables
 // Game Variables
-var snake
-var apple
+var snake = []
+var apple = []
 var score = 0
 // Constant Variables
 var ROWS = 20;
@@ -124,11 +124,11 @@ function moveSnake() {
   }
   repositionSquare(snake.head);
   if (snake.head.direction === "down") {
-    snake.head.column = snake.head.row - 1;
+    snake.head.row = snake.head.row + 1;
   }
   repositionSquare(snake.head);
   if (snake.head.direction === "up") {
-    snake.head.column = snake.head.row + 1;
+    snake.head.row = snake.head.row - 1;
   }
   repositionSquare(snake.head);
   /*
@@ -138,7 +138,7 @@ function moveSnake() {
 }
 
 function hasHitWall() {
-  if (snake.head.column > 20) {
+  if (snake.head.column > 19) {
     return true
   }
   if (snake.head.row > 20) {
