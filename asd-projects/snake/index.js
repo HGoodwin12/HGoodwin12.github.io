@@ -42,15 +42,13 @@ $("body").on("keydown", handleKeyDown);
 init();
 
 function init() {
+  // TODO 4b-2: initialize the apple
+  makeApple()
   // initialize the snake's body as an empty Array
   snake.body = [];
-
   // make the first snakeSquare and set it as the head
   makeSnakeSquare(10, 10);
   snake.head = snake.body[0];
-
-  // TODO 4b-2: initialize the apple
-  makeApple()
   // start update interval
   updateInterval = setInterval(update, 100);
 }
@@ -115,15 +113,37 @@ function moveSnake() {
   //Before moving the head, check for a new direction from the keyboard input
   checkForNewDirection();
 
-  /* 
-  TODO 7: determine the next row and column for the snake's head
   
+  /*TODO 7: determine the next row and column for the snake's head*/
+  if (snake.head.direction === "left") {
+    snake.head.column = snake.head.column - 1;
+  }
+  repositionSquare(snake.head);
+  if (snake.head.direction === "right") {
+    snake.head.column = snake.head.column + 1;
+  }
+  repositionSquare(snake.head);
+  if (snake.head.direction === "down") {
+    snake.head.column = snake.head.row - 1;
+  }
+  repositionSquare(snake.head);
+  if (snake.head.direction === "up") {
+    snake.head.column = snake.head.row + 1;
+  }
+  repositionSquare(snake.head);
+  /*
   HINT: The snake's head will need to move forward 1 square based on the value
   of snake.head.direction which may be one of "left", "right", "up", or "down"
   */
 }
 
 function hasHitWall() {
+  if (snake.head.column > 20) {
+    return true
+  }
+  if (snake.head.row > 20) {
+    return true
+  }
   /* 
   TODO 8: Should return true if the snake's head has collided with the four walls of the
   board, false otherwise.
@@ -135,6 +155,12 @@ function hasHitWall() {
 }
 
 function hasCollidedWithApple() {
+  if (apple.row = snake.head.row) {
+    return true
+  }
+  if (apple.column = snake.head.column) {
+    return true
+  }
   /* 
   TODO 9: Should return true if the snake's head has collided with the apple, 
   false otherwise
